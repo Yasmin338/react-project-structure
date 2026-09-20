@@ -120,22 +120,113 @@
 // }
 
 // export default App
+// ظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظظ
+// import Navbar from "./components/layout/Navbar";
+// import Footer from "./components/layout/Footer";
+// import Home from "./pages/Home";
 
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import Home from "./pages/Home";
+// function App() {
+//   return (
+//     <>
+//       <Navbar />
+
+//       <main>
+//         <Home />
+//       </main>
+
+//       <Footer />
+//     </>
+//   );
+// }
+
+// export default App;
+import Button from "./components/Button/Button";
+import Card from "./components/Card/Card";
+import Table from "./components/Table/Table";
+
+const products = [
+  {
+    Name: "Laptop",
+    Price: 1200,
+    Category: "Electronics",
+    Stock: 10,
+  },
+  {
+    Name: "Smartphone",
+    Price: 800,
+    Category: "Electronics",
+    Stock: 25,
+  },
+  {
+    Name: "Headphones",
+    Price: 150,
+    Category: "Accessories",
+    Stock: 40,
+  },
+];
 
 function App() {
+  const handleAddProduct = () => {
+    alert("Product added!");
+  };
+
+  const handleDeleteProduct = () => {
+    alert("Product deleted!");
+  };
+
   return (
-    <>
-      <Navbar />
+    <div className="app">
+      <h1>Product Dashboard</h1>
 
-      <main>
-        <Home />
-      </main>
+      <section className="buttons-section">
+        <h2>Buttons</h2>
 
-      <Footer />
-    </>
+        <Button
+          text="Add Product"
+          onClick={handleAddProduct}
+          variant="primary"
+        />
+
+        <Button
+          text="Delete Product"
+          onClick={handleDeleteProduct}
+          variant="danger"
+        />
+      </section>
+
+      <section className="cards-section">
+        <h2>Products</h2>
+
+        <div className="cards-container">
+          <Card
+            title="Laptop"
+            description="A powerful laptop for work and study."
+            image="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500"
+          />
+
+          <Card
+            title="Smartphone"
+            description="A modern smartphone with great features."
+          >
+            <Button
+              text="View Details"
+              onClick={() => alert("Viewing smartphone details")}
+              variant="secondary"
+            />
+          </Card>
+        </div>
+      </section>
+
+      <section className="table-section">
+        <h2>Product List</h2>
+
+        <Table
+          columns={["Name", "Price", "Category", "Stock"]}
+          data={products}
+          striped
+        />
+      </section>
+    </div>
   );
 }
 
